@@ -1,0 +1,45 @@
+.buttonNavWrapper {
+    display: inline-block;
+    font-size: 1.2rem;
+    line-height: 20px;
+
+    .second {
+        background: var(--bg-button-color);
+
+        &:hover {
+            .icon {
+                color: var(--text-color)
+            }
+        }
+    }
+
+    .first {
+        background: var(--bg-button-blue-color);
+        color: var(--text-primary-color);
+
+        &:hover {
+            background: var(--bg-button-blue-color);
+        }
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        color: var(--text-color);
+        font-weight: 500;
+        padding: 0.6rem 0.8rem;
+        border-radius: 0.8rem;
+
+        &:hover {
+            background: var(--bg-button-color);
+        }
+
+
+        .icon {
+            display: flex;
+            align-items: center;
+            margin-right: 4px;
+            color: var(--text-secondary-color);
+        }
+    }
+}

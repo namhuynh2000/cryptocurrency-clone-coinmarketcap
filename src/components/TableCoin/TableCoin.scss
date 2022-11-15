@@ -1,0 +1,83 @@
+.tableCoinWrapper {
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    background: var(--bg-color);
+
+    th,
+    td {
+        border-bottom: 1px solid #222531;
+    }
+
+    thead {
+        tr {
+
+
+            th {
+                padding: 1.3rem 1rem;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            a {
+                color: var(--text-color);
+            }
+
+            &:hover {
+                background: var(--bg-button-color);
+            }
+
+            .center {
+                text-align: center;
+            }
+
+            .starIcon {
+                transform: translateY(1px);
+                cursor: pointer;
+
+                &:hover {
+                    svg {
+                        color: #f6b87e !important;
+                    }
+                }
+            }
+
+            td {
+                padding: 2.9rem 1rem;
+            }
+
+            .changeUp {
+                color: var(--text-up-color)
+            }
+
+            .changeDown {
+                color: var(--text-down-color)
+            }
+
+            .name {
+                // display: flex;
+                // justify-content: center;
+                align-items: center;
+                gap: 0.5rem;
+                position: relative;
+            }
+        }
+
+        img {
+            width: 24px;
+            height: 24px;
+            border-radius: 100%;
+            position: absolute;
+            top: 50%;
+            // left: 50%;
+            transform: translateY(-50%);
+        }
+
+        span {
+            font-weight: 500;
+            margin-left: 30px;
+        }
+    }
+}

@@ -1,0 +1,46 @@
+.homepageWrapper {
+    padding: 0 8rem;
+
+    header {
+        padding: 2.4rem 0;
+
+        .title {
+            margin: 0.8rem 0 0.4rem 0;
+
+        }
+
+        .description {
+            color: var(--text-secondary-color);
+            font-size: 1.4rem;
+
+            span {
+                font-weight: 500;
+            }
+        }
+    }
+
+    main {
+        margin-top: 1.5rem;
+
+        .nav {
+            display: flex;
+            gap: 0.4rem;
+
+            .slash {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #323546;
+                width: 30px;
+            }
+
+            .navButton {
+                display: flex;
+                gap: 1rem;
+            }
+        }
+
+    }
+
+
+}
