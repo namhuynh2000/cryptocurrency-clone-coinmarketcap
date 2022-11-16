@@ -77,10 +77,6 @@ function TableCoin() {
                             <td className='center'>${Number(coin['24hVolume']).toLocaleString()}</td>
                         </tr>)
                     })}
-                    {/* <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr> */}
                 </tbody>
 
 

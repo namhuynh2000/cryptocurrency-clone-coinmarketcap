@@ -1,6 +1,6 @@
 .headerWrapper {
     background-color: var(--bg-color);
-    padding: 0.8rem 0;
+    padding: 0.7rem 0;
     border-bottom: 1px solid #222531;
 
     .container {
@@ -8,17 +8,71 @@
         color: var(--text-secondary-color);
         margin: 0 auto;
         display: flex;
-        gap: 1.2rem;
+        justify-content: space-between;
+
+        .info {
+            display: flex;
+            gap: 1.2rem;
+
+        }
 
         .content {
             font-size: 1.1rem;
             font-weight: 500;
-
             padding: 1rem 0;
         }
 
         span {
-            color: #6188FF;
+            color: var(--text-primary-color);
+        }
+
+        .loginButton {
+            padding: 0 2rem;
+            border-radius: 1rem;
+            border: 1px solid transparent;
+            background: #3861fb;
+            font-weight: 600;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+        }
+
+        .user {
+            display: flex;
+            gap: 1rem;
+
+            .logoutButton {
+                padding: 0 2rem;
+                border-radius: 1rem;
+                border: 1px solid #3861fb;
+                font-weight: 600;
+                color: #3861fb;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+
+                &:hover {
+                    background: rgba($color: #fff, $alpha: 0.05)
+                }
+            }
+        }
+
+        .avatar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 500;
+
+            img {
+                width: 30px;
+                border-radius: 99rem;
+            }
+
         }
     }
 }

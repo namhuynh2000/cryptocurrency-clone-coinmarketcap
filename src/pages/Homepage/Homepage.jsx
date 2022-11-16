@@ -3,17 +3,17 @@ import DefaultLayout from '../../components/Layouts/DefaultLayout';
 import "./Homepage.scss";
 import millify from "millify";
 import { AiFillStar, AiFillPieChart } from 'react-icons/ai';
-import ButtonNav from '../../components/ButtonNav/ButtonNav'
-
+import ButtonNav from '../../components/ButtonNav/ButtonNav';
 
 import { useGetStatsQuery } from '../../services/cryptoApi'
 import TableCoin from '../../components/TableCoin/TableCoin';
 
 function Homepage() {
 
-    const { data } = useGetStatsQuery();
-
+    const { data, isFetching } = useGetStatsQuery();
     const stats = data?.data;
+
+    if (isFetching) return "Loading..."
 
     return (
         <>
