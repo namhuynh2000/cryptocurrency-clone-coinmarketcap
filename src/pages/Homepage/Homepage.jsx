@@ -10,6 +10,7 @@ import TableCoin from '../../components/TableCoin/TableCoin';
 
 function Homepage() {
 
+
     const { data, isFetching } = useGetStatsQuery();
     const stats = data?.data;
 

@@ -10,20 +10,24 @@ import RequireAuth from "./components/RequireAuth/RequireAuth";
 import NewsPage from "./pages/NewsPage/NewsPage";
 import WatchlistPage from "./pages/WatchlistPage/WatchlistPage";
 import PortfolioPage from "./pages/PortfolioPage/PortfolioPage";
-import LoginPage from "./pages/LoginPage/LoginPage"
+import LoginPage from "./pages/LoginPage/LoginPage";
+import { getUser } from "./utils/firestoreFirebase";
+
+
 
 function App() {
   const dispatch = useDispatch();
 
-  onAuthStateChanged(auth, (currentUser) => {
+  onAuthStateChanged(auth, async (currentUser) => {
     if (currentUser) {
-      const value = {
-        uid: currentUser.uid,
-        displayName: currentUser.displayName,
-        email: currentUser.email,
-        photoURL: currentUser.photoURL,
-      }
-      dispatch(setUser(value));
+      const user = await getUser(currentUser.uid);
+      // const value = {
+      //   uid: currentUser.uid,
+      //   displayName: currentUser.displayName,
+      //   email: currentUser.email,
+      //   photoURL: currentUser.photoURL,
+      // }
+      dispatch(setUser(user));
     }
     else { dispatch(setUser({})) }
   })

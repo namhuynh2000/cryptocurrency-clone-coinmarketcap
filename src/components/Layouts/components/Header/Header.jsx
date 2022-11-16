@@ -1,6 +1,7 @@
 import React from 'react';
 import { useGetStatsQuery } from "../../../../services/cryptoApi";
 import { signIn, logOut } from "../../../../utils/authFirebase";
+import { getUser, addUser } from "../../../../utils/firestoreFirebase";
 import { setUser } from "../../../../app/reduces/userSlice";
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -13,23 +14,27 @@ function Header() {
     const dispatch = useDispatch();
     const user = useSelector(state => state.user.value);
 
-    console.log(user);
-
-    function refreshPage() {
-        window.location.reload(false);
-    }
+    // function refreshPage() {
+    //     window.location.reload(false);
+    // }
 
     async function signInFunction() {
         try {
             const result = await signIn();
-            const value = {
-                uid: result.uid,
-                displayName: result.displayName,
-                email: result.email,
-                photoURL: result.photoURL,
+            const user = await getUser(result.user.uid);
+            if (!user) {
+                const value = {
+                    uid: result.user.uid,
+                    displayName: result.user.displayName,
+                    email: result.user.email,
+                    photoURL: result.user.photoURL,
+                    watchList: [],
+                }
+                await addUser(value.uid, value);
+                dispatch(setUser(value));
+            } else {
+                dispatch(setUser(user));
             }
-            dispatch(setUser(value));
-            refreshPage();
         }
         catch (e) {
             console.error(e)
@@ -40,7 +45,6 @@ function Header() {
         try {
             await logOut();
             dispatch(setUser({}));
-            // refreshPage();
         }
         catch (e) {
             console.error(e)
@@ -60,7 +64,7 @@ function Header() {
                         <div className="content">24h Vol: <span>${Number(stats.total24hVolume).toLocaleString()}</span></div>
                         <div className="content">Dominance: <span>BTC: {Math.round(stats.btcDominance * 100) / 100}%</span></div>
                     </div>
-                    {user.uid ? (<div className='user'>
+                    {user?.uid ? (<div className='user'>
                         <div className='avatar'>
                             <img src={user.photoURL} alt="avatar" />
                             {user.displayName}

@@ -34,14 +34,16 @@
             }
 
             .starIcon {
-                transform: translateY(1px);
-                cursor: pointer;
+                svg {
+                    transform: translateY(1px);
+                    cursor: pointer;
 
-                &:hover {
-                    svg {
-                        color: #f6b87e !important;
+                    &:hover {
+                        color: #f6e47e !important;
                     }
                 }
+
+
             }
 
             td {
