@@ -24,7 +24,12 @@
 
         .nav {
             display: flex;
-            gap: 0.4rem;
+            justify-content: space-between;
+
+            .left-nav {
+                display: flex;
+                gap: 0.4rem;
+            }
 
             .slash {
                 display: flex;
@@ -37,6 +42,74 @@
             .navButton {
                 display: flex;
                 gap: 1rem;
+            }
+
+            .rows {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+                font-size: 1.2rem;
+                position: relative;
+
+
+                .numRow {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0.6rem 0.8rem;
+                    background: var(--bg-button-color);
+                    border-radius: 0.8rem;
+                    font-weight: 600;
+                    cursor: pointer;
+
+                    .hidden {
+                        visibility: hidden;
+                    }
+
+                    .wrapperList {
+                        position: absolute;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        top: 100%;
+
+                        .tritangle {
+                            background: var(--bg-button-color);
+                            width: 30%;
+                            height: 10px;
+                            clip-path: polygon(50% 30%, 0% 100%, 100% 100%);
+                            top: 100%;
+                        }
+
+                        .listNum {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            // width: 300%;
+                            background: var(--bg-button-color);
+                            padding: 0.7rem 1rem;
+                            border-radius: 1rem;
+
+                            .num {
+                                width: 100%;
+                                padding: 0.7rem 1rem;
+                                display: flex;
+                                justify-content: center;
+
+                                &:hover {
+                                    background: var(--text-secondary-color);
+                                    border-radius: 0.7rem;
+
+                                }
+                            }
+                        }
+                    }
+
+
+                }
             }
         }
 

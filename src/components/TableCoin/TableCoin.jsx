@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useGetCryptosQuery } from '../../services/cryptoApi';
 import "./TableCoin.scss";
 import { BiStar } from "react-icons/bi";
@@ -9,22 +9,37 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateUser } from "../../utils/firestoreFirebase";
 import { setUser } from "../../app/reduces/userSlice"
 
-
-
-function TableCoin() {
+function TableCoin({ numCoinDisplay }) {
     const user = useSelector((state) => state.user.value);
     const dispatch = useDispatch();
-    const { data: dataDefault } = useGetCryptosQuery({ count: 100, time: '24h' });
-    const { data: dataOneHours } = useGetCryptosQuery({ count: 100, time: '1h' });
-    const { data: dataSevenDays } = useGetCryptosQuery({ count: 100, time: '7d' });
-    // const { data } = useGetCryptosQuery({ count: 10, time: '3m' });
+    const [loop, setLoop] = useState(false);
+
+    const { data: dataDefault, refetch: refetchDefault } = useGetCryptosQuery({ count: numCoinDisplay, time: '24h' });
+    const { data: dataOneHours, refetch: refetchHours } = useGetCryptosQuery({ count: numCoinDisplay, time: '1h' });
+    const { data: dataSevenDays, refetch: refetchDays } = useGetCryptosQuery({ count: numCoinDisplay, time: '7d' });
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            refetchDefault();
+            refetchHours();
+            refetchDays();
+            setLoop(!loop);
+        }, 3000);
+        return () => {
+            clearInterval(interval);
+        };
+    }, [loop, refetchDefault, refetchHours, refetchDays]);
+
+    const coins = dataDefault?.data?.coins;
+
+    // console.log(coins[0]?.price);
 
     // if (isFetching) return "Loading...";
-    const coins = dataDefault?.data?.coins;
+
 
     const coinsConfig = coins?.map((coin, index) => {
         if (coin.price >= 0.005)
-            return { ...coin, price: Number(Number(coin.price).toFixed(4)).toLocaleString(undefined, { maximumFractionDigits: 4, minimumFractionDigits: 2 }), changeOneHours: dataOneHours?.data?.coins[index].change, changeSevenDays: dataSevenDays?.data?.coins[index].change }
+            return { ...coin, price: Number(Number(coin.price).toFixed(4)).toLocaleString(undefined, { maximumFractionDigits: 4, minimumFractionDigits: 2 }), changeOneHours: dataOneHours?.data?.coins[index]?.change, changeSevenDays: dataSevenDays?.data?.coins[index]?.change }
         else {
             let numfix = 0;
             for (let num of coin.price) {
@@ -35,7 +50,7 @@ function TableCoin() {
                     break;
                 }
             }
-            return { ...coin, price: Number(coin.price).toFixed(numfix + 2), changeOneHours: dataOneHours?.data?.coins[index].change, changeSevenDays: dataSevenDays?.data?.coins[index].change }
+            return { ...coin, price: Number(coin.price).toFixed(numfix + 2), changeOneHours: dataOneHours?.data?.coins[index]?.change, changeSevenDays: dataSevenDays?.data?.coins[index]?.change }
         }
     });
 

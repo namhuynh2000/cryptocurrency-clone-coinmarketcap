@@ -1,10 +1,11 @@
 import React from 'react';
 import { useGetStatsQuery } from "../../../../services/cryptoApi";
-import { signIn, logOut } from "../../../../utils/authFirebase";
-import { getUser, addUser } from "../../../../utils/firestoreFirebase";
+// import { signIn, logOut } from "../../../../utils/authFirebase";
+// import { getUser, addUser } from "../../../../utils/firestoreFirebase";
 import { setUser } from "../../../../app/reduces/userSlice";
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { signInFunction, logOutFunction } from "../../../../utils/logicFirebase"
 
 import './Header.scss';
 
@@ -18,38 +19,38 @@ function Header() {
     //     window.location.reload(false);
     // }
 
-    async function signInFunction() {
-        try {
-            const result = await signIn();
-            const user = await getUser(result.user.uid);
-            if (!user) {
-                const value = {
-                    uid: result.user.uid,
-                    displayName: result.user.displayName,
-                    email: result.user.email,
-                    photoURL: result.user.photoURL,
-                    watchList: [],
-                }
-                await addUser(value.uid, value);
-                dispatch(setUser(value));
-            } else {
-                dispatch(setUser(user));
-            }
-        }
-        catch (e) {
-            console.error(e)
-        }
-    }
+    // async function signInFunction() {
+    //     try {
+    //         const result = await signIn();
+    //         const user = await getUser(result.user.uid);
+    //         if (!user) {
+    //             const value = {
+    //                 uid: result.user.uid,
+    //                 displayName: result.user.displayName,
+    //                 email: result.user.email,
+    //                 photoURL: result.user.photoURL,
+    //                 watchList: [],
+    //             }
+    //             await addUser(value.uid, value);
+    //             dispatch(setUser(value));
+    //         } else {
+    //             dispatch(setUser(user));
+    //         }
+    //     }
+    //     catch (e) {
+    //         console.error(e)
+    //     }
+    // }
 
-    async function logOutFunction() {
-        try {
-            await logOut();
-            dispatch(setUser({}));
-        }
-        catch (e) {
-            console.error(e)
-        }
-    }
+    // async function logOutFunction() {
+    //     try {
+    //         await logOut();
+    //         dispatch(setUser({}));
+    //     }
+    //     catch (e) {
+    //         console.error(e)
+    //     }
+    // }
 
     if (isFetching) return 'Loading...';
 
@@ -70,12 +71,12 @@ function Header() {
                             {user.displayName}
 
                         </div>
-                        <div className="logoutButton content" onClick={logOutFunction}>
+                        <div className="logoutButton content" onClick={async () => { dispatch(setUser(await logOutFunction())) }}>
                             Log Out
                         </div>
                     </div>
 
-                    ) : (<div className="loginButton content" onClick={signInFunction}>
+                    ) : (<div className="loginButton content" onClick={async () => { dispatch(setUser(await signInFunction())) }}>
                         Log In
                     </div>)}
 
