@@ -14,16 +14,16 @@ function Navbar() {
                 <div className="container">
                     <div className="nav-left">
                         <Link to='/' className="logo">
-                            <img src="coinmarketcap-logo.png" alt="coinmarketcap-logo" />
+                            <img src="/coinmarketcap-logo.png" alt="coinmarketcap-logo" />
                         </Link>
                         <Link to="/">Cryptocurrencies</Link>
                         <Link to="/News">News</Link>
                     </div>
                     <div className="nav-right">
-                        <ButtonNav icon={<AiFillStar size={20} />} toHref="/Watchlist">
+                        <ButtonNav auth icon={<AiFillStar size={20} />} toHref="/Watchlist">
                             Watchlist
                         </ButtonNav>
-                        <ButtonNav icon={<AiFillPieChart size={20} />} toHref="/Portfolio"  >
+                        <ButtonNav auth icon={<AiFillPieChart size={20} />} toHref="/Portfolio"  >
                             Portfolio
                         </ButtonNav>
                         <div className="searchBtn">

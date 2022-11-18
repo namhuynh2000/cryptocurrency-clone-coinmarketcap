@@ -12,8 +12,10 @@ import WatchlistPage from "./pages/WatchlistPage/WatchlistPage";
 import PortfolioPage from "./pages/PortfolioPage/PortfolioPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { getUser } from "./utils/firestoreFirebase";
+import { ToastContainer } from 'react-toastify';
 
-
+import 'react-toastify/dist/ReactToastify.css';
+import DetailCoin from "./pages/DetailCoin/DetailCoin";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,12 +23,6 @@ function App() {
   onAuthStateChanged(auth, async (currentUser) => {
     if (currentUser) {
       const user = await getUser(currentUser.uid);
-      // const value = {
-      //   uid: currentUser.uid,
-      //   displayName: currentUser.displayName,
-      //   email: currentUser.email,
-      //   photoURL: currentUser.photoURL,
-      // }
       dispatch(setUser(user));
     }
     else { dispatch(setUser({})) }
@@ -35,10 +31,12 @@ function App() {
 
   return (
     <div className="App">
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/News" element={<NewsPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/CoinDetail/:id" element={<DetailCoin />} />
 
         <Route path="/Portfolio"
           element={

@@ -6,17 +6,17 @@ import { BsFillCaretDownFill, BsFillCaretUpFill } from "react-icons/bs";
 import { AiFillStar } from "react-icons/ai"
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { updateUser } from "../../utils/firestoreFirebase";
-import { setUser } from "../../app/reduces/userSlice"
+import { updateWatchListFunction } from "../../utils/logicFirebase";
+import { setUser } from "../../app/reduces/userSlice";
 
 function TableCoin({ numCoinDisplay }) {
     const user = useSelector((state) => state.user.value);
     const dispatch = useDispatch();
     const [loop, setLoop] = useState(false);
 
-    const { data: dataDefault, refetch: refetchDefault } = useGetCryptosQuery({ count: numCoinDisplay, time: '24h' });
-    const { data: dataOneHours, refetch: refetchHours } = useGetCryptosQuery({ count: numCoinDisplay, time: '1h' });
-    const { data: dataSevenDays, refetch: refetchDays } = useGetCryptosQuery({ count: numCoinDisplay, time: '7d' });
+    const { data: dataDefault, refetch: refetchDefault } = useGetCryptosQuery({ count: numCoinDisplay, timePeriod: '24h' });
+    const { data: dataOneHours, refetch: refetchHours } = useGetCryptosQuery({ count: numCoinDisplay, timePeriod: '1h' });
+    const { data: dataSevenDays, refetch: refetchDays } = useGetCryptosQuery({ count: numCoinDisplay, timePeriod: '7d' });
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -54,17 +54,9 @@ function TableCoin({ numCoinDisplay }) {
         }
     });
 
-    async function updateWatchList(id, data) {
-        if (user.uid) {
-            let newWatchList = []
-            if (user.watchList.includes(data)) {
-                newWatchList = user.watchList.filter(item => item !== data);
-            }
-            else {
-                newWatchList = [...user.watchList, data];
-            }
-            dispatch(setUser({ ...user, watchList: newWatchList }))
-            await updateUser(id, { watchList: newWatchList });
+    async function updateWatchList(id, data, user) {
+        if (id) {
+            dispatch(setUser(await updateWatchListFunction(id, data, user)));
         }
     }
 
@@ -82,7 +74,7 @@ function TableCoin({ numCoinDisplay }) {
                         <th>7d %</th>
                         <th>Market Cap</th>
                         <th>Volume(24h)</th>
-                        <th style={{ width: '20%' }}>Last 7 Days</th>
+                        {/* <th style={{ width: '20%' }}>Last 7 Days</th> */}
                     </tr>
                 </thead>
                 <tbody>
@@ -90,8 +82,9 @@ function TableCoin({ numCoinDisplay }) {
                         return (<tr key={coin.uuid}>
                             <td className='starIcon'>
                                 {user?.watchList?.includes(coin.uuid) ?
-                                    <AiFillStar onClick={() => { updateWatchList(user?.uid, coin.uuid) }} size={17} color='#ffd900' /> :
-                                    <BiStar onClick={() => { updateWatchList(user?.uid, coin.uuid) }} size={17} color='#A1A7BB' />}</td>
+                                    <AiFillStar onClick={() => { updateWatchList(user?.uid, coin.uuid, user) }} size={17} color='#ffd900' /> :
+                                    <BiStar onClick={() => { updateWatchList(user?.uid, coin.uuid, user) }} size={17} color='#A1A7BB' />}
+                            </td>
                             <td className='center'>{coin.rank}</td>
                             <td className='name'>
                                 <Link to={`/CoinDetail/${coin.uuid}`}>
@@ -114,6 +107,8 @@ function TableCoin({ numCoinDisplay }) {
                                 : (<td className='changeUp center'><BsFillCaretUpFill size={12} />{Math.abs(coin.changeSevenDays)}%</td>)}
                             <td className='center'>${Number(coin.marketCap).toLocaleString()}</td>
                             <td className='center'>${Number(coin['24hVolume']).toLocaleString()}</td>
+                            {/* <td><Chart coinID={coin?.uuid} /></td> */}
+                            {/* <td><LineChart coinId={coin.uuid} /></td> */}
                         </tr>)
                     })}
                 </tbody>

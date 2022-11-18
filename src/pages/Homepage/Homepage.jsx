@@ -34,10 +34,10 @@ function Homepage() {
                     <main>
                         <div className="nav">
                             <div className='left-nav'>
-                                <ButtonNav impression='second' icon={<AiFillStar size={20} />} toHref="/Watchlist">
+                                <ButtonNav auth impression='second' icon={<AiFillStar size={20} />} toHref="/Watchlist">
                                     Watchlist
                                 </ButtonNav>
-                                <ButtonNav impression='second' icon={<AiFillPieChart size={20} />} toHref="/Portfolio">
+                                <ButtonNav auth impression='second' icon={<AiFillPieChart size={20} />} toHref="/Portfolio">
                                     Portfolio
                                 </ButtonNav>
                                 <div className="slash">|</div>

@@ -1,0 +1,100 @@
+.nameSectionWrapper {
+    font-weight: 500;
+    font-size: 1.1rem;
+
+
+
+    .nameHeader {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1rem;
+        margin: 0 0 1.5rem 0;
+
+        .rank {
+            background: var(--text-secondary-color);
+            line-height: 1;
+            padding: 0.6rem 0.5rem;
+            border-radius: 0.5rem;
+            display: inline-block;
+        }
+
+        .starIcon {
+            font-size: 1.7rem;
+            padding: 0.5rem 0.8rem;
+            border-radius: 0.8rem;
+            border: 1px solid #323546;
+            cursor: pointer;
+        }
+
+        .name {
+            font-size: 3.2rem;
+            font-weight: 600;
+        }
+
+        .symbol {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary-color);
+            padding: 0.5rem 0.6rem;
+            background: var(--bg-button-color);
+            border-radius: 0.4rem;
+        }
+    }
+
+    .links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+        padding-bottom: 1rem;
+
+        svg {
+            font-size: 1.5rem;
+        }
+
+        .web,
+        .explorers,
+        .community,
+        .chat,
+        .code,
+        .whitePaper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.6rem 0.8rem;
+            background: var(--bg-button-color);
+            border-radius: 0.8rem;
+            gap: 0.5rem;
+            line-height: 1;
+            cursor: pointer;
+
+            &:hover {
+                background: var(--text-secondary-color);
+            }
+        }
+    }
+
+    .tags {
+        color: var(--text-secondary-color);
+
+        .heading {
+            margin-bottom: 0.7rem;
+        }
+
+        .content {
+            display: flex;
+            gap: 0.5rem;
+            color: var(--text-color);
+
+            .tag {
+                color: var(--text-color);
+                background: var(--bg-button-color);
+                border-radius: 100rem;
+                padding: 0.5rem 1rem;
+                flex-wrap: wrap;
+
+            }
+        }
+    }
+}

@@ -1,18 +1,28 @@
 import React from 'react';
 import './ButtonNav.scss';
 import { Link } from "react-router-dom";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { toast } from 'react-toastify';
 
+function ButtonNav({ impression, children, icon, toHref, auth = false }) {
+    const user = useSelector(state => state.user.value);
 
-function ButtonNav({ impression, children, icon, toHref }) {
-    // const user = useSelector((state) => state.user.value);
-    // if (!user.uid) {
-    //     toHref = "/";
-    // }
+    function checkAuth(e) {
+        if (auth && !user.uid) {
+            e.preventDefault();
+            toast.warn("Login to use this feature!");
+        }
+        else {
+            if (toHref === '/Portfolio') {
+                e.preventDefault();
+                toast("Coming soon!");
+            }
+        }
+    }
     return (
         <>
             <div className="buttonNavWrapper">
-                <Link to={toHref} className={`${impression}`}>
+                <Link onClick={checkAuth} to={toHref} className={`${impression}`}>
                     {icon ? <div className="icon">{icon}</div> : null}
                     {children}</Link>
             </div>

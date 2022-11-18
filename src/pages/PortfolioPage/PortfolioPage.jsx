@@ -1,6 +1,8 @@
-import React from 'react'
+import React from 'react';
+
 
 function PortfolioPage() {
+
     return (
         <div>PortfolioPage</div>
     )

@@ -15,14 +15,20 @@ export const cryptoApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl, headers: cryptoApiHeaders }),
     endpoints: (builder) => ({
         getCryptos: builder.query({
-            query: ({ count, time }) => createRequest('/coins', { limit: count.toString(), timePeriod: time })
+            query: ({ count, timePeriod = '24h' }) => createRequest('/coins', { limit: count.toString(), timePeriod: timePeriod })
+        }),
+        getCrypto: builder.query({
+            query: ({ coinId, timePeriod = '24h' }) => createRequest(`/coin/${coinId}`, { timePeriod: timePeriod })
         }),
         getStats: builder.query({
             query: () => createRequest('/stats')
         }),
+        getCryptoHistory: builder.query({
+            query: ({ coinId, timePeriod = '24h' }) => createRequest(`/coin/${coinId}/history`, { timePeriod: timePeriod })
+        })
     }),
 })
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetCryptosQuery, useGetStatsQuery } = cryptoApi
+export const { useGetCryptosQuery, useGetStatsQuery, useGetCryptoHistoryQuery, useGetCryptoQuery } = cryptoApi

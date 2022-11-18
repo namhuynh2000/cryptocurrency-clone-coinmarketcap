@@ -1,5 +1,5 @@
 import { signIn, logOut } from "./authFirebase";
-import { addUser, getUser } from "./firestoreFirebase";
+import { addUser, getUser, updateUser } from "./firestoreFirebase";
 
 
 export async function signInFunction() {
@@ -36,4 +36,18 @@ export async function logOutFunction() {
     catch (e) {
         console.error(e)
     }
+}
+
+export async function updateWatchListFunction(id, data, user) {
+    let newWatchList = []
+    if (user.watchList.includes(data)) {
+        //delete WatchIcon
+        newWatchList = user.watchList.filter(item => item !== data);
+    }
+    else {
+        //add WatchIcon
+        newWatchList = [...user.watchList, data];
+    }
+    await updateUser(id, { watchList: newWatchList });
+    return ({ ...user, watchList: newWatchList });
 }
