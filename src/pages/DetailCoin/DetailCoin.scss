@@ -1,0 +1,20 @@
+.innerDetail {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+    .nameSection {
+        grid-column: 1/2;
+        grid-row: 1/3;
+    }
+
+    .priceSection {
+        grid-column: 2/4;
+        grid-row: 1/2;
+    }
+
+    .statSection {
+        grid-column: 2/4;
+        grid-row: 2/3;
+    }
+}

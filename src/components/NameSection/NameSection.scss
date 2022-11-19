@@ -84,11 +84,12 @@
 
         .content {
             display: flex;
+            flex-wrap: wrap;
             gap: 0.5rem;
             color: var(--text-color);
 
             .tag {
-                color: var(--text-color);
+                color: var(--text-secondary-color);
                 background: var(--bg-button-color);
                 border-radius: 100rem;
                 padding: 0.5rem 1rem;

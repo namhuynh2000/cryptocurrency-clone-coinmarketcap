@@ -2,7 +2,9 @@ import React from 'react';
 import { useParams } from "react-router-dom";
 import DefaultLayout from '../../components/Layouts/DefaultLayout';
 import NameSection from '../../components/NameSection/NameSection';
-import { useGetCryptoQuery } from "../../services/cryptoApi"
+import PriceSection from '../../components/PriceSection/PriceSection';
+import { useGetCryptoQuery } from "../../services/cryptoApi";
+import "./DetailCoin.scss"
 
 function DetailCoin() {
     const params = useParams();
@@ -18,7 +20,8 @@ function DetailCoin() {
         <DefaultLayout>
             <main className="innerDetail">
                 <div className="nameSection"><NameSection coinDetail={coinDetail} /></div>
-                <div className="priceSection">451247</div>
+                <div className="priceSection"><PriceSection coinDetail={coinDetail} /></div>
+                <div className="statSection">statSection</div>
             </main>
         </DefaultLayout>
     )

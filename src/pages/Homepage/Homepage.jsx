@@ -22,55 +22,55 @@ function Homepage() {
     }
 
     return (
-        <>
-            <DefaultLayout>
-                <div className="homepageWrapper">
-                    <header>
-                        <h2 className="title">Today's Cryptocurrency Prices by Market Cap</h2>
-                        <p className="description">The global crypto market cap is <span>${millify(stats?.totalMarketCap, {
-                            precision: 2
-                        })}</span>.</p>
-                    </header>
-                    <main>
-                        <div className="nav">
-                            <div className='left-nav'>
-                                <ButtonNav auth impression='second' icon={<AiFillStar size={20} />} toHref="/Watchlist">
-                                    Watchlist
-                                </ButtonNav>
-                                <ButtonNav auth impression='second' icon={<AiFillPieChart size={20} />} toHref="/Portfolio">
-                                    Portfolio
-                                </ButtonNav>
-                                <div className="slash">|</div>
 
-                                <div className="navButton">
-                                    <ButtonNav impression='first' toHref="/">
-                                        Cryptocurrencies
-                                    </ButtonNav>
-                                    <ButtonNav toHref="/News">
-                                        News
-                                    </ButtonNav>
-                                </div>
+        <DefaultLayout>
+            <div className="homepageWrapper">
+                <header>
+                    <h2 className="title">Today's Cryptocurrency Prices by Market Cap</h2>
+                    <p className="description">The global crypto market cap is <span>${millify(stats?.totalMarketCap, {
+                        precision: 2
+                    })}</span>.</p>
+                </header>
+                <main>
+                    <div className="nav">
+                        <div className='left-nav'>
+                            <ButtonNav auth impression='second' icon={<AiFillStar size={20} />} toHref="/Watchlist">
+                                Watchlist
+                            </ButtonNav>
+                            <ButtonNav auth impression='second' icon={<AiFillPieChart size={20} />} toHref="/Portfolio">
+                                Portfolio
+                            </ButtonNav>
+                            <div className="slash">|</div>
+
+                            <div className="navButton">
+                                <ButtonNav impression='first' toHref="/">
+                                    Cryptocurrencies
+                                </ButtonNav>
+                                <ButtonNav toHref="/News">
+                                    News
+                                </ButtonNav>
                             </div>
-                            <div className="rows">Show rows
-                                <div className='numRow' onClick={showList}>{amountCoins} <HiChevronDown size='2rem' />
-                                    <div className="wrapperList hidden">
-                                        <div className="tritangle"></div>
-                                        <div className="listNum">
-                                            <div className="num" onClick={() => { setAmountCoins(100) }}>100</div>
-                                            <div className="num" onClick={() => { setAmountCoins(50) }}>50</div>
-                                            <div className="num" onClick={() => { setAmountCoins(20) }}>20</div>
-                                        </div>
+                        </div>
+                        <div className="rows">Show rows
+                            <div className='numRow' onClick={showList}>{amountCoins} <HiChevronDown size='2rem' />
+                                <div className="wrapperList hidden">
+                                    <div className="tritangle"></div>
+                                    <div className="listNum">
+                                        <div className="num" onClick={() => { setAmountCoins(100) }}>100</div>
+                                        <div className="num" onClick={() => { setAmountCoins(50) }}>50</div>
+                                        <div className="num" onClick={() => { setAmountCoins(20) }}>20</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="tableCoins">
-                            <TableCoin numCoinDisplay={amountCoins} />
-                        </div>
-                    </main>
-                </div>
-            </DefaultLayout>
-        </>
+                    </div>
+                    <div className="tableCoins">
+                        <TableCoin numCoinDisplay={amountCoins} />
+                    </div>
+                </main>
+            </div>
+        </DefaultLayout>
+
     )
 }
 

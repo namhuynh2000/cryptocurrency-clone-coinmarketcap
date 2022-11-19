@@ -1,0 +1,57 @@
+.buttonLinkWrapper {
+    a {
+        color: var(--text-color)
+    }
+
+    .buttonLink {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.6rem 0.8rem;
+        background: var(--bg-button-color);
+        border-radius: 0.8rem;
+        gap: 0.5rem;
+        line-height: 1;
+        cursor: pointer;
+        position: relative;
+
+
+        &:hover {
+            background: var(--text-secondary-color);
+
+            .wrapperList {
+                display: flex;
+            }
+        }
+
+        .wrapperList {
+            position: absolute;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            top: 100%;
+
+            .tritangle {
+                background: var(--bg-button-color);
+                width: 10%;
+                height: 10px;
+                clip-path: polygon(50% 30%, 0% 100%, 100% 100%);
+                top: 100%;
+            }
+
+            .listLink {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                // width: 300%;
+                background: var(--bg-button-color);
+                padding: 1.8rem 1rem;
+                border-radius: 1rem;
+                gap: 2rem;
+
+            }
+        }
+    }
+}
