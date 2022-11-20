@@ -1,0 +1,26 @@
+.chartDetailWrapper {
+    .listPeriod {
+        display: inline-block;
+        padding: 0.3rem;
+        background-color: var(--bg-button-color);
+        border-radius: 0.8rem;
+
+        .active {
+            background-color: var(--bg-button-blue-color);
+        }
+
+        .timePeriod {
+            display: inline-block;
+            color: var(--text-secondary-color);
+            padding: 1rem;
+            border-radius: 0.8rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--bg-button-blue-color);
+            }
+        }
+    }
+}

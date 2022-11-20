@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from "react-router-dom";
+import ChartDetail from '../../components/ChartDetail/ChartDetail';
 import DefaultLayout from '../../components/Layouts/DefaultLayout';
 import NameSection from '../../components/NameSection/NameSection';
 import PriceSection from '../../components/PriceSection/PriceSection';
@@ -19,10 +20,24 @@ function DetailCoin() {
 
     return (
         <DefaultLayout>
-            <main className="innerDetail">
+            <header className="headDetail">
                 <div className="nameSection"><NameSection coinDetail={coinDetail} /></div>
                 <div className="priceSection"><PriceSection coinDetail={coinDetail} /></div>
                 <div className="statSection"><StatSection coinDetail={coinDetail} /></div>
+            </header>
+            <main className='mainDetail'>
+                <div className="mainNavigate">
+                    <div className="btnNavigate active">Overview</div>
+                    <div className="btnNavigate">News</div>
+                </div>
+                <div className="mainChart">
+                    <div className="chartHeader">
+                        {coinDetail.name} to USD Chart
+                    </div>
+                    <div className="chartWrapper">
+                        <ChartDetail coinDetail={coinDetail} />
+                    </div>
+                </div>
             </main>
         </DefaultLayout>
     )

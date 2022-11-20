@@ -28,7 +28,7 @@ function StatSection({ coinDetail }) {
                     Circulating Supply
                 </div>
                 <div className="resulDisplay">{Number(coinDetail.supply.circulating).toLocaleString()} {coinDetail.symbol}</div>
-                <div className="statLabel" style={{ marginTop: '2.8rem' }}>Max Supply <span>{Number(coinDetail.supply.max).toLocaleString()}</span></div>
+                <div className="statLabel" style={{ marginTop: '2.8rem' }}>Max Supply {coinDetail.supply.max ? <span>{Number(coinDetail.supply.max).toLocaleString()} </span> : <span>--</span>}</div>
                 <div className="statLabel" >Total Supply <span>{Number(coinDetail.supply.total).toLocaleString()}</span></div>
             </div>
         </div>

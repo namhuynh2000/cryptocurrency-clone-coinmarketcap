@@ -1,4 +1,4 @@
-.innerDetail {
+.headDetail {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -17,5 +17,45 @@
     .statSection {
         grid-column: 2/4;
         grid-row: 2/3;
+    }
+}
+
+.mainDetail {
+    .mainChart {
+        .chartHeader {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+    }
+
+    .mainNavigate {
+        padding: 1.4rem 0;
+        border-top: 1px solid #222531;
+        border-bottom: 1px solid #222531;
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+
+        .btnNavigate {
+            border-radius: 0.8rem;
+            padding: 1rem 1.2rem;
+            color: var(--text-color);
+
+            font-weight: 500;
+            font-size: 1.4rem;
+            cursor: pointer;
+
+            &:hover {
+                background: var(--bg-button-color);
+            }
+        }
+
+        .active {
+            background-color: #3861fb;
+
+            &:hover {
+                background-color: #3861fb;
+            }
+        }
     }
 }

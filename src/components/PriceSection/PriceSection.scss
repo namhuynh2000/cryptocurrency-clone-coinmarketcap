@@ -2,6 +2,12 @@
     padding-bottom: 4rem;
     border-bottom: 1px solid #323546;
 
+    .convertBTC {
+        font-size: 1.4rem;
+        margin-top: 2rem;
+        color: var(--text-secondary-color);
+    }
+
     .priceHeading {
         font-size: 1.2rem;
         color: var(--text-secondary-color);
