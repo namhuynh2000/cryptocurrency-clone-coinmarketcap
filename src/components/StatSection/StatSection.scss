@@ -1,0 +1,44 @@
+.statSectionWrapper {
+    display: flex;
+    font-size: 1.2rem;
+
+    .statsBlock {
+        padding: 1rem 2rem;
+        border-right: 1px solid #323546;
+        min-width: 220px;
+
+        .resulDisplay {
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        .statLabel {
+            // display: flex;
+            // align-items: center;
+            font-weight: 500;
+            color: var(--text-secondary-color);
+            line-height: 2.2rem;
+
+            span {
+                color: var(--text-color);
+                margin-left: 1rem;
+                float: right;
+            }
+
+            .volume {
+                display: inline-block;
+            }
+
+            .btn24h {
+                padding: 0.5rem 0.6rem;
+                display: inline-block;
+                color: var(--text-secondary-color);
+                background-color: var(--bg-button-color);
+                border-radius: 0.4rem;
+                line-height: 1;
+
+                margin-left: 0.5rem;
+            }
+        }
+    }
+}

@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { updateWatchListFunction } from "../../utils/logicFirebase";
 import { setUser } from "../../app/reduces/userSlice";
+import { priceConvert } from "../../utils/logicHandle"
 
 function TableCoin({ numCoinDisplay }) {
     const user = useSelector((state) => state.user.value);
@@ -38,20 +39,7 @@ function TableCoin({ numCoinDisplay }) {
 
 
     const coinsConfig = coins?.map((coin, index) => {
-        if (coin.price >= 0.005)
-            return { ...coin, price: Number(Number(coin.price).toFixed(4)).toLocaleString(undefined, { maximumFractionDigits: 4, minimumFractionDigits: 2 }), changeOneHours: dataOneHours?.data?.coins[index]?.change, changeSevenDays: dataSevenDays?.data?.coins[index]?.change }
-        else {
-            let numfix = 0;
-            for (let num of coin.price) {
-                if (num === '0' || num === '.') {
-                    numfix++;
-                }
-                else {
-                    break;
-                }
-            }
-            return { ...coin, price: Number(coin.price).toFixed(numfix + 2), changeOneHours: dataOneHours?.data?.coins[index]?.change, changeSevenDays: dataSevenDays?.data?.coins[index]?.change }
-        }
+        return { ...coin, price: priceConvert(coin.price), changeOneHours: dataOneHours?.data?.coins[index]?.change, changeSevenDays: dataSevenDays?.data?.coins[index]?.change }
     });
 
     async function updateWatchList(id, data, user) {
