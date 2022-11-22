@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from "react-router-dom";
 import ChartDetail from '../../components/ChartDetail/ChartDetail';
+import Converter from '../../components/Converter/Converter';
 import DefaultLayout from '../../components/Layouts/DefaultLayout';
 import NameSection from '../../components/NameSection/NameSection';
 import PriceSection from '../../components/PriceSection/PriceSection';
@@ -31,11 +32,17 @@ function DetailCoin() {
                     <div className="btnNavigate">News</div>
                 </div>
                 <div className="mainChart">
-                    <div className="chartHeader">
-                        {coinDetail.name} to USD Chart
-                    </div>
                     <div className="chartWrapper">
+                        <div className="chartHeader">
+                            {coinDetail.name} to USD Chart
+                        </div>
                         <ChartDetail coinDetail={coinDetail} />
+                    </div>
+                    <div className="converterWrapper">
+                        <div className="converterHeader">
+                            {coinDetail.symbol} to USD Converter
+                        </div>
+                        <Converter coinDetail={coinDetail} />
                     </div>
                 </div>
             </main>

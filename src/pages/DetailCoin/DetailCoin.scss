@@ -22,9 +22,22 @@
 
 .mainDetail {
     .mainChart {
-        .chartHeader {
-            font-size: 1.8rem;
-            font-weight: 600;
+        .chartWrapper {
+            .chartHeader {
+                font-size: 1.8rem;
+                font-weight: 600;
+            }
+
+            width: 800px;
+            margin-bottom: 4rem;
+        }
+
+        .converterWrapper {
+            .converterHeader {
+                font-size: 1.8rem;
+                font-weight: 600;
+                margin-bottom: 2rem;
+            }
         }
     }
 
@@ -35,6 +48,7 @@
         display: flex;
         gap: 1rem;
         margin-bottom: 2rem;
+        margin-top: 2rem;
 
         .btnNavigate {
             border-radius: 0.8rem;

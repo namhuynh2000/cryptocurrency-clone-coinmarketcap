@@ -1,0 +1,72 @@
+.convertWrapper {
+    display: flex;
+    height: 80px;
+    position: relative;
+    border-radius: 1.6rem;
+    overflow: hidden;
+    border: 1px solid #222531;
+    // flex-direction: row-reverse;
+
+    .convertIcon {
+        cursor: pointer;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 100rem;
+    }
+
+    .coin {
+        background-color: #171924;
+    }
+
+    .usd {
+        background-color: #222531;
+    }
+
+    .icon {
+        img {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    .coin,
+    .usd {
+        display: flex;
+        // justify-content: center;
+        align-items: center;
+        width: 50%;
+        padding: 2rem 2.4rem;
+
+        .symbol {
+            font-size: 11px;
+            color: var(--text-secondary-color);
+        }
+
+        .fullName {
+            margin-top: 0.5rem;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .icon {
+            margin-right: 1.2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        input {
+            color: var(--text-color);
+            flex: 1;
+            background-color: transparent;
+            outline: none;
+            border: none;
+            text-align: end;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+    }
+
+}
