@@ -59,7 +59,7 @@ function Header() {
         <div className="headerWrapper">
             <div className="container">
                 <div className="info">
-                    <div className="content">Cryptos: <span>{stats?.totalCoins.toLocaleString()}</span></div>
+                    <div className="content">Cryptos: <span>{stats.totalCoins.toLocaleString()}</span></div>
                     <div className="content">Exchanges: <span>{stats.totalExchanges.toLocaleString()}</span></div>
                     <div className="content">Market Cap: <span>${Number(stats.totalMarketCap).toLocaleString()}</span></div>
                     <div className="content">24h Vol: <span>${Number(stats.total24hVolume).toLocaleString()}</span></div>

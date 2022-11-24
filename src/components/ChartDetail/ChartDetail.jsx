@@ -21,7 +21,7 @@ function ChartDetail({ coinDetail }) {
     const [settingChart, setSettingChart] = useState({
         width: 900,
         height: 400,
-        margin: { top: 5, right: 75, bottom: 5, left: 40 }
+        margin: { top: 5, right: 75, bottom: 5, left: 30 }
     })
     const strokeColor = coinDetail?.change < 0 ? "var(--text-down-color)" : "var(--text-up-color)";
 
@@ -31,7 +31,7 @@ function ChartDetail({ coinDetail }) {
                 {
                     width: 900,
                     height: 400,
-                    margin: { top: 5, right: 75, bottom: 5, left: 40 }
+                    margin: { top: 5, right: 75, bottom: 5, left: 30 }
                 }
             )
         }
@@ -44,7 +44,7 @@ function ChartDetail({ coinDetail }) {
         document.addEventListener('webkitfullscreenchange', exitHandler, false);
     }, [])
 
-    if (isFetching) return "Loading...";
+    // if (isFetching) return "Loading...";
 
     // if (coinHistory === undefined) {
     //     refetch();
@@ -88,6 +88,9 @@ function ChartDetail({ coinDetail }) {
 
     return (
         <div className='chartDetailWrapper' >
+            <div className="chartHeader">
+                {coinDetail?.name} to USD Chart
+            </div>
             <div className="headingChart">
                 <div className="expandBtn" onClick={() => {
                     setSettingChart(
@@ -127,9 +130,9 @@ function ChartDetail({ coinDetail }) {
                     <Tooltip content={<CustomTooltip />} />
                     {/* <Legend /> */}
                     <Line type="monotone" dataKey="price" strokeWidth="2" stroke={strokeColor} dot={<></>} />
-                    <ReferenceLine y={reverseData[0].price} stroke="var(--text-secondary-color)" strokeDasharray="2">
+                    <ReferenceLine y={reverseData[0]?.price} stroke="var(--text-secondary-color)" strokeDasharray="2">
                         <Label fill='#fff' >
-                            {priceConvert(reverseData[0].price)}
+                            {priceConvert(reverseData[0]?.price)}
                         </Label>
                     </ReferenceLine>
                 </LineChart>

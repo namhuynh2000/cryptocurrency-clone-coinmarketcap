@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 const cryptoApiHeaders = {
-    'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
+    'X-RapidAPI-Key': process.env.REACT_APP_CRYPTO_API_KEY,
     'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
 }
 
@@ -20,6 +20,9 @@ export const cryptoApi = createApi({
         getCrypto: builder.query({
             query: ({ coinId, timePeriod = '24h' }) => createRequest(`/coin/${coinId}`, { timePeriod: timePeriod })
         }),
+        getCryptoRefetch: builder.query({
+            query: (coinId) => createRequest(`/coin/${coinId}`)
+        }),
         getStats: builder.query({
             query: () => createRequest('/stats')
         }),
@@ -31,4 +34,4 @@ export const cryptoApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetCryptosQuery, useGetStatsQuery, useGetCryptoHistoryQuery, useGetCryptoQuery } = cryptoApi
+export const { useGetCryptosQuery, useGetStatsQuery, useGetCryptoHistoryQuery, useGetCryptoQuery, useGetCryptoRefetchQuery } = cryptoApi

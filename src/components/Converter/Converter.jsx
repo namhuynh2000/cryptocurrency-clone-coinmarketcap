@@ -1,18 +1,34 @@
 import React, { useState } from 'react';
+import { useGetCryptoRefetchQuery } from '../../services/cryptoApi';
 import { priceConvert } from "../../utils/logicHandle"
 import "./Converter.scss";
 
 function Converter({ coinDetail }) {
-    const [coinPrice, setCoinPrice] = useState(1);
-    const [usdPrice, setUsdPrice] = useState(priceConvert(coinDetail.price));
-    const [flexDirection, setFlexDirection] = useState('row');
+    const [coinPrice, setCoinPrice] = useState(0);
+    const [usdPrice, setUsdPrice] = useState(0);
+    const [flexDirection, setFlexDirection] = useState('column');
+
+    const { data } = useGetCryptoRefetchQuery(coinDetail.uuid);
+    // const [loop, setLoop] = useState(false);
+
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         refetch();
+    //         setLoop(!loop);
+    //     }, 3000);
+    //     return () => {
+    //         clearInterval(interval);
+    //     };
+    // }, [loop, refetch]);
+
+    // if (isFetching) return "Loading...";
 
     const convertFunction = function () {
-        if (flexDirection === 'row-reverse') {
-            setFlexDirection('row');
+        if (flexDirection === 'column-reverse') {
+            setFlexDirection('column');
         }
         else {
-            setFlexDirection('row-reverse');
+            setFlexDirection('column-reverse');
         }
     }
 
@@ -30,7 +46,7 @@ function Converter({ coinDetail }) {
                 </div>
                 <input type="text" value={coinPrice} onChange={(e) => {
                     setCoinPrice(e.target.value);
-                    setUsdPrice(priceConvert(Number(e.target.value) * coinDetail.price));
+                    setUsdPrice(priceConvert(Number(e.target.value) * data?.data.coin.price));
                 }} />
             </div>
             <div className="usd">
@@ -44,7 +60,7 @@ function Converter({ coinDetail }) {
                 </div>
                 <input type="text" value={usdPrice} onChange={(e) => {
                     setUsdPrice(e.target.value);
-                    setCoinPrice(priceConvert(e.target.value / coinDetail.price));
+                    setCoinPrice(priceConvert(e.target.value / data?.data.coin.price));
                 }} />
             </div>
         </div>

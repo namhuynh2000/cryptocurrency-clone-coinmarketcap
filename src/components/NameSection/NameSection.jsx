@@ -18,7 +18,6 @@ import ButtonLink from '../ButtonLink/ButtonLink';
 function NameSection({ coinDetail }) {
     const user = useSelector((state) => state.user.value);
     const dispatch = useDispatch();
-    console.log(coinDetail);
 
     const web = [];
     const explorer = [];

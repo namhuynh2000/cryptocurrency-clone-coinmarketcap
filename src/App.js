@@ -15,7 +15,7 @@ import { getUser } from "./utils/firestoreFirebase";
 import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
-import DetailCoin from "./pages/DetailCoin/DetailCoin";
+import DetailCoinPage from "./pages/DetailCoinPage/DetailCoinPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,7 +36,8 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/News" element={<NewsPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/CoinDetail/:id" element={<DetailCoin />} />
+        <Route path="/CoinDetail/:id" element={<DetailCoinPage />} />
+        {/* <Route path="/CoinDetail/:id/News" element={<DetailCoin />} /> */}
 
         <Route path="/Portfolio"
           element={

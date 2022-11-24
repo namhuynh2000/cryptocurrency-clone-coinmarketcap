@@ -1,0 +1,124 @@
+.headDetail {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    padding-top: 2rem;
+
+    .nameSection {
+        grid-column: 1/2;
+        grid-row: 1/3;
+    }
+
+    .priceSection {
+        grid-column: 2/4;
+        grid-row: 1/2;
+    }
+
+    .statSection {
+        grid-column: 2/4;
+        grid-row: 2/3;
+    }
+}
+
+.mainDetail {
+    .mainChart {
+        display: flex;
+        justify-content: space-between;
+
+        .chartWrapper,
+        .newsDeatilWrapper {
+            width: 800px;
+            // margin-bottom: 4rem;
+        }
+
+        .rightWrapper {
+            margin-left: 5rem;
+
+            .converterWrapper {
+                margin-bottom: 2rem;
+
+                .converterHeader {
+                    font-size: 1.8rem;
+                    font-weight: 600;
+                    margin-bottom: 2rem;
+                }
+            }
+
+            .tableTrend {
+                padding: 2.6rem 2.4rem 1.6rem 2.4rem;
+                background-color: #222531;
+                border-radius: 1.6rem;
+
+                .tableHeader {
+                    font-size: 1.8rem;
+                    font-weight: 600;
+                    margin-bottom: 1.5rem;
+                }
+
+                .content {
+                    .item {
+                        color: var(--text-color);
+                        display: flex;
+                        align-items: center;
+                        padding: 1.2rem 1rem;
+
+                        &:hover {
+                            background-color: #323546;
+                        }
+
+                        img {
+                            margin-right: 2rem;
+                            height: 24px;
+                            width: 24px;
+                        }
+
+                        .name {
+                            font-size: 1.4rem;
+                            font-weight: 500;
+                            margin-right: 1rem;
+                        }
+
+                        .symbol {
+                            font-size: 1.2rem;
+                            font-weight: 500;
+                            color: var(--text-secondary-color);
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    .mainNavigate {
+        padding: 1.4rem 0;
+        border-top: 1px solid #222531;
+        border-bottom: 1px solid #222531;
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+
+        .btnNavigate {
+            border-radius: 0.8rem;
+            padding: 1rem 1.2rem;
+            color: var(--text-color);
+
+            font-weight: 500;
+            font-size: 1.4rem;
+            cursor: pointer;
+
+            &:hover {
+                background: var(--bg-button-color);
+            }
+        }
+
+        .active {
+            background-color: #3861fb;
+
+            &:hover {
+                background-color: #3861fb;
+            }
+        }
+    }
+}

@@ -3,8 +3,6 @@ import "./StatSection.scss"
 
 function StatSection({ coinDetail }) {
 
-    console.log(coinDetail);
-
     return (
         <div className='statSectionWrapper'>
             <div className="statsBlock" style={{ paddingLeft: '0' }}>
