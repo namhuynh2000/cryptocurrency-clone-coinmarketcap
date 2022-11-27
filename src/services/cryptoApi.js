@@ -15,7 +15,7 @@ export const cryptoApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl, headers: cryptoApiHeaders }),
     endpoints: (builder) => ({
         getCryptos: builder.query({
-            query: ({ count, timePeriod = '24h' }) => createRequest('/coins', { limit: count.toString(), timePeriod: timePeriod })
+            query: ({ count, timePeriod = '24h', offset = 0, tag }) => createRequest('/coins', { limit: count.toString(), timePeriod: timePeriod, offset: offset.toString(), 'tags[0]': tag })
         }),
         getCrypto: builder.query({
             query: ({ coinId, timePeriod = '24h' }) => createRequest(`/coin/${coinId}`, { timePeriod: timePeriod })
@@ -28,7 +28,7 @@ export const cryptoApi = createApi({
         }),
         getCryptoHistory: builder.query({
             query: ({ coinId, timePeriod = '24h' }) => createRequest(`/coin/${coinId}/history`, { timePeriod: timePeriod })
-        })
+        }),
     }),
 })
 

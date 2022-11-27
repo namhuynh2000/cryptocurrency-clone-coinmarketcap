@@ -1,0 +1,28 @@
+.scrollWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 40px;
+    height: 34px;
+    background: var(--text-secondary-color);
+    border-radius: 0.4rem;
+    color: #000;
+    cursor: pointer;
+    transition: 0.2s linear;
+
+    &:hover {
+        background-color: var(--bg-button-color);
+        color: #fff;
+    }
+}
+
+.hideScrollBtn {
+    display: none;
+}
+
+.showScrollBtn {
+    display: flex;
+}

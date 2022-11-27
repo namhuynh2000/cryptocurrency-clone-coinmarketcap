@@ -8,9 +8,7 @@ import { setUser } from "./app/reduces/userSlice";
 import { useDispatch } from 'react-redux';
 import RequireAuth from "./components/RequireAuth/RequireAuth";
 import NewsPage from "./pages/NewsPage/NewsPage";
-import WatchlistPage from "./pages/WatchlistPage/WatchlistPage";
-import PortfolioPage from "./pages/PortfolioPage/PortfolioPage";
-import LoginPage from "./pages/LoginPage/LoginPage";
+// import WatchlistPage from "./pages/WatchlistPage/WatchlistPage";
 import { getUser } from "./utils/firestoreFirebase";
 import { ToastContainer } from 'react-toastify';
 
@@ -35,20 +33,20 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/News" element={<NewsPage />} />
-        <Route path="/login" element={<LoginPage />} />
         <Route path="/CoinDetail/:id" element={<DetailCoinPage />} />
+        <Route path="/Tag/:tag" element={<Homepage />} />
         {/* <Route path="/CoinDetail/:id/News" element={<DetailCoin />} /> */}
 
         <Route path="/Portfolio"
           element={
             <RequireAuth>
-              <PortfolioPage />
+              {/* <PortfolioPage /> */}
             </RequireAuth>} />
 
         <Route path="/Watchlist"
           element={
             <RequireAuth>
-              <WatchlistPage />
+              {/* <WatchlistPage /> */}
             </RequireAuth>} />
 
       </Routes>

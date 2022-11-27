@@ -20,6 +20,11 @@
     main {
         margin-top: 1.5rem;
 
+        .pagination {
+            margin-top: 4rem;
+            padding-bottom: 5rem;
+        }
+
         .nav {
             display: flex;
             justify-content: space-between;

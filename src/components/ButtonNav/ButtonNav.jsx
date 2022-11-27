@@ -17,6 +17,10 @@ function ButtonNav({ impression, children, icon, toHref, auth = false }) {
                 e.preventDefault();
                 toast("Coming soon!");
             }
+            if (toHref === '/Watchlist') {
+                e.preventDefault();
+                toast("Coming soon!");
+            }
         }
     }
     return (

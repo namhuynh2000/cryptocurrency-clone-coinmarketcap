@@ -11,6 +11,14 @@ function News({ coinDetail }) {
     const [count, setCount] = useState(5);
     const { data: newsData, refetch } = useGetNewsQuery({ newsCategory: category, count: count });
 
+    // console.log(newsData)
+
+    if (newsData?.value.length === 0)
+        return (
+            <div className="newsHeaderNoData">
+                Don't have News about this coin
+            </div>
+        )
     // if (isFetching) return "Loading...";
 
     return (

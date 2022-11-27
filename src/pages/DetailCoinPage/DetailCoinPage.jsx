@@ -20,7 +20,6 @@ function DetailCoinPage() {
     const [isNews, setIsNews] = useState(false);
 
 
-
     if (isFetching) return "Loading...";
     const coinDetail = data.data.coin;
 
