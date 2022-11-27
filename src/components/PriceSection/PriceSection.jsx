@@ -10,15 +10,15 @@ function PriceSection({ coinDetail }) {
 
     const [loop, setLoop] = useState(false);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            refetch();
-            setLoop(!loop);
-        }, 3000);
-        return () => {
-            clearInterval(interval);
-        };
-    }, [loop, refetch]);
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         refetch();
+    //         setLoop(!loop);
+    //     }, 3000);
+    //     return () => {
+    //         clearInterval(interval);
+    //     };
+    // }, [loop, refetch]);
 
 
     return (

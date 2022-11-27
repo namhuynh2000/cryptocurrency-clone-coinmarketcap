@@ -104,7 +104,7 @@ function Homepage() {
                         <TableCoin numCoinDisplay={amountCoins} numPag={numPag} tag={tag} />
                     </div>
                     <div className="pagination">
-                        <Pagination totalCoins={dataDefault?.data.stats.total} amountCoins={amountCoins} numPag={numPag} setNumPag={setNumPag} />
+                        <Pagination totalCoins={dataDefault?.data?.stats?.total} amountCoins={amountCoins} numPag={numPag} setNumPag={setNumPag} />
                     </div>
                 </main>
             </div>

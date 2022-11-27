@@ -21,17 +21,17 @@ function TableCoin({ numCoinDisplay, numPag, tag }) {
     let { data: dataSevenDays, refetch: refetchDays } = useGetCryptosQuery({ count: numCoinDisplay, timePeriod: '7d', offset: ((numPag - 1) * numCoinDisplay), tag: tag });
 
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            refetchDefault();
-            refetchHours();
-            refetchDays();
-            setLoop(!loop);
-        }, 3000);
-        return () => {
-            clearInterval(interval);
-        };
-    }, [loop, refetchDefault, refetchHours, refetchDays]);
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         refetchDefault();
+    //         refetchHours();
+    //         refetchDays();
+    //         setLoop(!loop);
+    //     }, 3000);
+    //     return () => {
+    //         clearInterval(interval);
+    //     };
+    // }, [loop, refetchDefault, refetchHours, refetchDays]);
 
     const coins = dataDefault?.data?.coins;
 
