@@ -9,7 +9,7 @@ function News({ coinDetail }) {
         category = `Cryptocurrency ${coinDetail?.name}`;
     }
     const [count, setCount] = useState(5);
-    const { data: newsData, isFetching, refetch } = useGetNewsQuery({ newsCategory: category, count: count });
+    const { data: newsData, refetch } = useGetNewsQuery({ newsCategory: category, count: count });
 
     // if (isFetching) return "Loading...";
 
