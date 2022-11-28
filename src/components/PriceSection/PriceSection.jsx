@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import "./PriceSection.scss";
 import { priceConvert } from "../../utils/logicHandle";
 import { BsFillCaretDownFill, BsFillCaretUpFill } from "react-icons/bs";
@@ -6,9 +6,9 @@ import { useGetCryptoRefetchQuery } from '../../services/cryptoApi';
 
 
 function PriceSection({ coinDetail }) {
-    const { data, refetch } = useGetCryptoRefetchQuery(coinDetail.uuid);
+    const { data } = useGetCryptoRefetchQuery(coinDetail.uuid);
 
-    const [loop, setLoop] = useState(false);
+    // const [loop, setLoop] = useState(false);
 
     // useEffect(() => {
     //     const interval = setInterval(() => {

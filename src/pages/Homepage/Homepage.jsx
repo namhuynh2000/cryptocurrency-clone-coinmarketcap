@@ -24,7 +24,6 @@ function Homepage() {
     const { data: dataDefault } = useGetCryptosQuery({ count: 1, timePeriod: '24h', tag: tag });
 
     if (isFetching) return "Loading...";
-    // console.log(data)
 
     function showList() {
         const popupList = document.querySelector('.wrapperList');

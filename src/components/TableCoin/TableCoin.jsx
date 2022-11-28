@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useGetCryptosQuery } from '../../services/cryptoApi';
 import "./TableCoin.scss";
 import { BiStar } from "react-icons/bi";
@@ -14,11 +14,11 @@ import { priceConvert } from "../../utils/logicHandle"
 function TableCoin({ numCoinDisplay, numPag, tag }) {
     const user = useSelector((state) => state.user.value);
     const dispatch = useDispatch();
-    const [loop, setLoop] = useState(false);
+    // const [loop, setLoop] = useState(false);
 
-    let { data: dataDefault, refetch: refetchDefault } = useGetCryptosQuery({ count: numCoinDisplay, timePeriod: '24h', offset: ((numPag - 1) * numCoinDisplay), tag: tag });
-    let { data: dataOneHours, refetch: refetchHours } = useGetCryptosQuery({ count: numCoinDisplay, timePeriod: '1h', offset: ((numPag - 1) * numCoinDisplay), tag: tag });
-    let { data: dataSevenDays, refetch: refetchDays } = useGetCryptosQuery({ count: numCoinDisplay, timePeriod: '7d', offset: ((numPag - 1) * numCoinDisplay), tag: tag });
+    let { data: dataDefault } = useGetCryptosQuery({ count: numCoinDisplay, timePeriod: '24h', offset: ((numPag - 1) * numCoinDisplay), tag: tag });
+    let { data: dataOneHours } = useGetCryptosQuery({ count: numCoinDisplay, timePeriod: '1h', offset: ((numPag - 1) * numCoinDisplay), tag: tag });
+    let { data: dataSevenDays } = useGetCryptosQuery({ count: numCoinDisplay, timePeriod: '7d', offset: ((numPag - 1) * numCoinDisplay), tag: tag });
 
 
     // useEffect(() => {

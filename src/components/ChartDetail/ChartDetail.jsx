@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid, Brush, Label, ReferenceLine } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, Brush, Label, ReferenceLine } from 'recharts';
 import { useGetCryptoHistoryQuery } from '../../services/cryptoApi';
 import { openFullscreen } from "../../utils/logicHandle";
 import { priceConvert } from "../../utils/logicHandle";
@@ -17,7 +17,7 @@ function ChartDetail({ coinDetail }) {
     // const listTickGap = [60, 60, 60, 60, 60];
 
     const chartRef = useRef(null);
-    const { data: coinHistory, isFetching, refetch } = useGetCryptoHistoryQuery({ coinId: coinDetail?.uuid, timePeriod: listPeriodConvert[timePeriod] });
+    const { data: coinHistory } = useGetCryptoHistoryQuery({ coinId: coinDetail?.uuid, timePeriod: listPeriodConvert[timePeriod] });
     const [settingChart, setSettingChart] = useState({
         width: 900,
         height: 400,
